@@ -45,17 +45,16 @@ const schema = buildSchema(`
 
 // Define resolvers
 const root = {
-  
   // takes 2 optional parameters courses(limit, sortOrder)
   // if no parameters supplied returns list of all available courses
   courses: async ({ limit, sortOrder }) => {
-    let sortIt = "SELECT * FROM courses";
+    let sortIt = 'SELECT * FROM courses';
     if (sortIt != undefined) {
-      const ascending = sortOrder == "ASC" ? true : false;
-      sortIt = ascending ? "SELECT * FROM courses ORDER BY id ASC" : "SELECT * FROM courses ORDER BY id DESC";
+      const ascending = sortOrder == 'ASC' ? true : false;
+      sortIt = ascending ? 'SELECT * FROM courses ORDER BY id ASC' : 'SELECT * FROM courses ORDER BY id DESC';
     }
     return new Promise((resolve, reject) => {
-      const limitIt = limit != undefined ? " limit ?" : "";
+      const limitIt = limit != undefined ? ' limit ?' : '';
       db.query(sortIt + limitIt, [limit], (err, results) => {
         if (err) reject(err);
         resolve(results); // Return the matching courses
@@ -63,12 +62,10 @@ const root = {
     });
   },
 
-  
   // return the course that matches the specified course id
   course: async ({ id }) => {
     return new Promise((resolve, reject) => {
       db.query('SELECT * FROM courses WHERE id = ?', [id], (err, results) => {
-        console.log(id);
         if (err) reject(err);
         resolve(results[0]); // Return the first matching course
       });
@@ -77,10 +74,8 @@ const root = {
 
   // return the courses that match the specified collection id
   coursesInCollection: async ({ id }) => {
-    console.log(id);
     return new Promise((resolve, reject) => {
       db.query('SELECT * FROM courses WHERE collection_id = ?', [id], (err, results) => {
-        console.log(id);
         if (err) reject(err);
         resolve(results); // Return the matching courses
       });
@@ -118,7 +113,7 @@ app.use(
     schema: schema,
     rootValue: root,
     graphiql: true, // Enable GraphiQL UI
-  })
+  }),
 );
 
 app.listen(4000, () => console.log('Server running at http://localhost:4000/graphql'));
