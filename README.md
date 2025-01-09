@@ -1,3 +1,8 @@
+**Overview:**<br/>
+
+Project based off of the Open Study College backend test: https://github.com/Open-Study-College/osc-backend-tech-test<br/>
+Aim of the project is to implement GraphQL API Queries against a database (preference of SQL) and perform certain mutations and user authentication.<br/>
+
 **To Run Project:**<br/>
 
 (1) Need to have a local mysql server running, and have the **university** database provided with this project<br/>
