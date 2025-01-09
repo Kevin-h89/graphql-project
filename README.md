@@ -6,6 +6,7 @@
 (4) The server can be accessed in the broswer using: http://localhost:4000/graphql<br/>
 
 **Outstanding Items:**<br/>
+
 (1) Add mutations (add, update, delete)<br/>
 (2) JWT Authentication (install necessary packages such as jsonwebtoken, bcryptjs etc., set up environment variables, add authentication middleware, update MySQL user model to have email and password fields, create signup and login)<br/>
 (3) Add a GUI to interact with the backend, and robust testing solution<br/>
